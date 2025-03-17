@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="{{ url_for('timetable') }}">Schedule</a>
+    <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+    <a href="">View my Services</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+<table>
+    <caption>Services you offer</caption>
+    <tr>
+        <th>Service Code</th>
+        <th>Service Name</th>
+        <th>Description</th>
+        <th>Promo Code</th>
+        <th>Promo Discount</th>
+        <th>Max Booking Hrs.</th>
+        <th>Price Per Hr.</th>
+    </tr>
+    {% for service in services %}
+        <tr>
+            <td>{{ service[0] }}</td>
+            <td>{{ service[1] }}</td>
+            <td>{{ service[2] }}</td>
+            <td>{{ service[3] }}</td>
+            <td>{{ service[4] }}</td>
+            <td>{{ service[5] }}</td>
+            <td>{{ service[6] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ url_for('upload_service') }}">Upload a service</a>
+<a href="{{ url_for('update_service') }}">Update a service</a>
+<a href="{{ url_for('remove_service') }}">Delete a service</a>
+</main>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<header>
+    {% if g.user %}
+        <h1>Welcome {{ g.user }}</h1>
+        <a href="{{ url_for('.index') }}">Services</a>
+        <a href="{{ url_for('view_bookings') }}">Bookings</a>
+        <a href="{{ url_for('report') }}">Report</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <h1>Welcome</h1>
+        <a href="{{ url_for('register') }}">Register</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</header>
+
+<main>
+    <h1>{{ service_details[1] }}</h1>
+    <p>Description: {{ service_details[2] }}</p>
+    <p>Seller Code: {{ service_details[3] }}</p>
+    <p>Max Booking Hrs: {{ service_details[6] }}</p>
+    <p>Price per Hour: {{ service_details[7] }}</p>
+    <a href="{{ url_for('make_booking', max_hrs = service_details[6], service_code = service_details[0]) }}">Book</a>
+</main>
+{% endblock %}

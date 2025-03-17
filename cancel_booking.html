@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    {% if g.account_type == "CUSTOMER" %}
+        <a href="{{ url_for('view_bookings') }}">Bookings</a>
+        <a href="{{ url_for('report') }}">Report</a>
+    {% elif g.account_type == "SELLER" %}
+        <a href="{{ url_for('view_bookings') }}">Bookings</a>
+        <a href="{{ url_for('timetable') }}">Schedule</a>
+        <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+        <a href="{{ url_for('view_my_services') }}">View my Services</a>
+        <a href="{{ url_for('update_service') }}">Update service details</a>
+        <a href="{{ url_for('report') }}">Report</a>
+        <a href="{{ url_for('payments') }}">Payments</a>
+    {% endif %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+<main>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.confirm.label }}
+        {{ form.confirm() }}
+        <br />
+        {{ form.reason.label }}
+        {{ form.reason(maxlength = "150", size = "50", height = "10") }}
+        {% for error in form.reason.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+</main>
+{% endblock %}

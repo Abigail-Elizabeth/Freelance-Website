@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="">Bookings</a>
+    <a href="{{ url_for('report') }}">Report</a>
+</header>
+<main>
+    {{ booking_details[0] }}
+    {{ booking_details[1] }}
+    {{ booking_details[2] }}
+    {{ booking_details[3] }}
+    {{ booking_details[4] }}
+    {{ booking_details[5] }}
+    {{ booking_details[6] }}
+    {{ booking_details[7] }}
+</main>
+{% endblock %}

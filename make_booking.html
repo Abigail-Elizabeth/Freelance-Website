@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<main>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.date.label }}
+        {{ form.date() }}
+        {% for error in form.date.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.from_when.label }}
+        {{ form.from_when() }}
+        {% for error in form.from_when.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.till_when.label }}
+        {{ form.till_when() }}
+        {% for error in form.till_when.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.promo_code.label }}
+        {{ form.promo_code() }}
+        <br />
+        {{ form.submit() }}
+    </form>
+</main>
+{% endblock %}

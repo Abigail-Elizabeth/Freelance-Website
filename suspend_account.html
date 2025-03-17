@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<main>
+    <p>Report ID: {{ report_details[0] }}</p>
+    {% if report_details[1] %}
+        <p>Reported Service: {{ report_details[1] }}</p>
+    {% endif %}
+    <p>Reason: {{ report_details[2] }}</p>
+    <p>Reported By: {{ report_details[3] }}</p>
+    <p>Got Reported: {{ report_details[4] }}</p>
+    <p>Date : {{ report_details[5] }}</p>
+    <form action="" method="POST">
+        {{ form1.hidden_tag() }}
+        {{ form1.confirm.label }}
+        {{ form1.confirm() }}
+        <br />
+        {{ form1.submit() }}
+    </form>
+    <form action="" method="POST">
+        {{ form2.hidden_tag() }}
+        {{ form.confirm.label }}
+        {{ form.confirm() }}
+        <br />
+        {{ form2.submit() }}
+    </form>
+</main>
+{% endblock %}

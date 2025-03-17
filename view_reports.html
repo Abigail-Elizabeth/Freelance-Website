@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<header>
+    <a href="">Reports</a>
+    <a href="all_payments">All Bookings</a>
+</header>
+<main>
+    <table>
+        <caption>Reports</caption>
+        <tr>
+            <th scope="col">Report ID</th>
+            <th scope="col">Reported Service Code</th>
+            <th scope="col">Date</th>
+            <th scope="col">Details</th>
+        </tr>
+        {% for report in reports %}
+            <tr>
+                <td>{{ report[0] }}</td>
+                <td>{{ report[1] }}</td>
+                <td>{{ report[5] }}</td>
+                <td><a href="url_for('suspend_account', report_id = {{ report[0] }})">View Details</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</main>
+{% endblock %}

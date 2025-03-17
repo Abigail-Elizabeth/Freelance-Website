@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<header>
+    {% if g.user %}
+        <h1>Welcome {{ g.user }}</h1>
+        <a href="">Services</a>
+        <a href="{{ url_for('view_bookings') }}">Bookings</a>
+        <a href="{{ url_for('report') }}">Report</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <h1>Welcome</h1>
+        <a href="{{ url_for('register') }}">Register</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</header>
+
+<main>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.service_name.label }}
+        {{ form.service_name(placeholder = "All") }}
+        <br />
+        {{ form.submit() }}
+    </form>
+    {% for service in services %}
+        <a href="{{ url_for('view_a_service', service_code = service[0]) }}">
+            {{ service[1] }}
+        </a>
+        <br />
+    {% endfor %}
+</main>
+
+{% endblock %}

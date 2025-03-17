@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="">Schedule</a>
+    <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+    <a href="{{ url_for('view_my_services') }}">View my Services</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+<table>
+    <caption>Your Schedule</caption>
+    <tr>
+        <th scope="col">Booking ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Service Name</th>
+        <th scope="col">Customer Username</th>
+    </tr>
+    {% for booking in bookings %}
+        <tr>
+            <td>{{ booking[0] }}</td>
+            <td>{{ booking[1] }}</td>
+            <td>{{ booking[2] }}</td>
+            <td>{{ booking[3] }}</td>
+            <td>{{ booking[4] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</main>
+
+{% endblock %}

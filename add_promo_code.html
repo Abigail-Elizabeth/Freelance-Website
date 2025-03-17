@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="{{ url_for('timetable') }}">Schedule</a>
+    <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+    <a href="{{ url_for('view_my_services') }}">View my Services</a>
+    <a href="">Update service details</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.service_code.label }}
+        {{ form.service_code() }}
+        {% for error in form.service_code.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.promo_code.label }}
+        {{ form.promo_code() }}
+        {% for error in form.promo_code.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.promo_discount.label }}
+        {{ form.promo_discount(placeholder = "0.15") }}
+        <br />
+        {{ form.submit() }}
+    </form>
+    {% if message %}
+        {{ message }}
+    {% endif %}
+</main>
+{% endblock %}

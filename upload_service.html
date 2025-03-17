@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="{{ url_for('timetable') }}">Schedule</a>
+    <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+    <a href="{{ url_for('view_my_services') }}">View my Services</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.service_name.label }}
+    {{ form.service_name() }}
+    {% for error in form.service_name.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.image.label }}
+    {{ form.image() }}
+    {% for error in form.image.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.description.label }}
+    {{ form.description(size = 75) }}
+    {% for error in form.description.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.promo_code.label }}
+    {{ form.promo_code() }}
+    <br />
+    {{ form.promo_discount.label }}
+    {{ form.promo_discount(placeholder = "0.15", maxlength = "4") }}
+    <br />
+    {{ form.max_booking_hrs.label }}
+    {{ form.max_booking_hrs() }}
+    <br />
+    {{ form.price_per_hour.label }}
+    {{ form.price_per_hour() }}
+    {% for error in form.price_per_hour.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.submit() }}
+</form>
+</main>
+
+{% endblock %}

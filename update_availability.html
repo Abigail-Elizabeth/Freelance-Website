@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="{{ url_for('timetable') }}">Schedule</a>
+    <a href="">Update my Availability</a>
+    <a href="{{ url_for('view_my_services') }}">View my Services</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.date.label }}
+    {{ form.date() }}
+    {% for error in form.date.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.from_when.label }}
+    {{ form.from_when() }}
+    {% for error in form.from_when.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.till_when.label }}
+    {{ form.till_when() }}
+    {% for error in form.till_when.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+    {{ form.submit() }}
+</form>
+
+{% if from_when %}
+    {{ from_when }}
+    {{ till_when }}
+    {{ date_unavailable }}
+{% endif %}
+</main>
+
+{% endblock %}

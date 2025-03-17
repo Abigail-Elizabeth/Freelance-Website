@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<header>
+    <h1>Welcome {{ g.user }}</h1>
+    <a href="{{ url_for('view_bookings') }}">Bookings</a>
+    <a href="{{ url_for('timetable') }}">Schedule</a>
+    <a href="{{ url_for('update_my_availability') }}">Update my Availability</a>
+    <a href="{{ url_for('view_my_services') }}">View my Services</a>
+    <a href="{{ url_for('report') }}">Report</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</header>
+
+<main>
+    <a href="{{ url_for('change_desc') }}">Change a service description</a>
+    <a href="{{ url_for('add_promo_code') }}">Add a promo code</a>
+    <a href="{{ url_for('delete_promo_code') }}">Delete a promo code</a>
+    <a href="{{ url_for('change_max_hrs') }}">Change max booking hrs</a>
+    <a href="{{ url_for('change_price') }}">Change a service price</a>
+</main>
+{% endblock %}

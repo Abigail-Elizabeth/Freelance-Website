@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<main>
+    <form action="" method="POST">
+        {{ form1.hidden_tag() }}
+        {{ form1.promo_code.label }}
+        {{ form1.promo_code() }}
+        {% for error in form1.promo_code.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form1.submit() }}
+    </form>
+    <form action="" method="POST">
+        {{ form2.hidden_tag() }}
+        {{ form2.email.label() }}
+        {{ form2.email() }}
+        {% for error in form2.email.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form2.price.label }}
+        {{ form2.price(disabled=True) }}
+        <br />
+        {{ form2.confirm.label }}
+        {{ form2.confirm() }}
+        <br />
+        {{ form2.submit() }}
+    </form>
+</main>
+{% endblock %}
